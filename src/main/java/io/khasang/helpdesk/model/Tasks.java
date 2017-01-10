@@ -2,6 +2,7 @@ package io.khasang.helpdesk.model;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import javax.activation.DataSource;
 import javax.persistence.Table;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-//@Component
+@Component
 public class Tasks {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;

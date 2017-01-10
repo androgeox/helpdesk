@@ -1,13 +1,14 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Angular User page</title>
     <%--<spring:url value="//angular.min.js" var="angularjs">--%>
     <script src="js/angular.min.js"></script>
-    <%--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js>"></script>--%>
-    <%--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-route.min.js>"></script>--%>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js>"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-route.min.js>"></script>
 </head>
 <body>
 <h1>Users</h1>
