@@ -2,27 +2,31 @@ package io.khasang.helpdesk.entity;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @XmlRootElement
 @Entity
 public class Users {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     private String name;
     private String login;
     private String password;
-    //    private int role_id;
-//    private int departmentId;
-    private String role;
     private String email;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
+    private Set<Status>  statuses = new HashSet<Status>();
+
 
     public String getEmail() {
         return email;
@@ -30,14 +34,6 @@ public class Users {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getName() {
@@ -64,27 +60,11 @@ public class Users {
         this.password = password;
     }
 
-//    public int getRole_id() {
-//        return role_id;
-//    }
-//
-//    public void setRole_id(int role_id) {
-//        this.role_id = role_id;
-//    }
-
-//    public int getDepartmentId() {
-//        return departmentId;
-//    }
-//
-//    public void setDepartmentId(int departmentId) {
-//        this.departmentId = departmentId;
-//    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

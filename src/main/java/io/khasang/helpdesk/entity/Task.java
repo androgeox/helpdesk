@@ -1,26 +1,35 @@
 package io.khasang.helpdesk.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Fetch;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
-    private int user_id;
+    private Integer user_id;
+
+    @Column(name = "description")
+    @NotNull
     private String description;
+
     private String comment;
     private Date date_created;
     private Date last_change;
     private Date close_date;
-    private int rates_id;
+    private Integer rates_id;
     private String state;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "task_id", nullable = false)
+    private Task task;
 
     public Task() {
     }
