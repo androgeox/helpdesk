@@ -6,6 +6,7 @@ Project for managing User Tasks
  * Spring MVC 4
  * Hibernate 5
  * PostgreSQL
+ * JSP
  * Spring Security
  * JUnit
  * Maven
